@@ -1,7 +1,7 @@
 
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .models import Room
+from .models import Room, Topic
 from .forms import RoomForm
 
 
@@ -15,7 +15,13 @@ from .forms import RoomForm
 
 def home(request):
     rooms = Room.objects.all() 
-    context = {'rooms': rooms}
+
+    topic = Topic.objects.all()
+
+
+
+    context = {'rooms': rooms,
+                'topics': topic}
     return render(request, 'base/home.html', context)
 
 def room(request, pk):
@@ -53,4 +59,8 @@ def updateRoom(request, pk):
 
 def deleteRoom(request, pk):
     room = Room.objects.get(id=pk)
-    
+    if request.method == 'POST':
+        room.delete()
+        return redirect('home')
+
+    return render(request, 'base/delete.html', {'obj': room})
