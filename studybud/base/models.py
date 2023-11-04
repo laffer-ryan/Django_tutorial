@@ -18,7 +18,7 @@ class Room(models.Model):
     # making null values possible
     # blank mean form can be empty
     description = models.TextField(null=True, blank=True)
-    # participants = 
+    participants = models.ManyToManyField(User, related_name='participants', blank=True)
     updated = models.DateTimeField(auto_now=True) # time stamp on update
     created = models.DateTimeField(auto_now_add=True) # time stamp only on creation
 
