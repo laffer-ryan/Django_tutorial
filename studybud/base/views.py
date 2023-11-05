@@ -121,6 +121,7 @@ def userProfile(request, pk):
 @login_required(login_url='login')
 def createRoom(request):
     form = RoomForm()
+    topics = Topic.objects.all()
     if request.method == 'POST':
         form = RoomForm(request.POST)
         if form.is_valid():
@@ -129,7 +130,8 @@ def createRoom(request):
             room.save()
             return redirect('home')
 
-    context = {'form': form}
+    context = {'form': form,
+                'topics':topics}
     return render(request, 'base/room_form.html', context)
 
 
