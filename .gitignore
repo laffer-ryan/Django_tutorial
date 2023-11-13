@@ -163,3 +163,4 @@ cython_debug/
 
 # Extra Folders
 theme/
+requirements.txt
