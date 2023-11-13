@@ -10,12 +10,6 @@ from django.contrib.auth import authenticate, login, logout
 from .models import Room, Topic, Message
 from .forms import RoomForm, UserForm
 
-# room = [
-#     {'id': 1, 'name': 'lets learn Python'},
-#     {'id': 2, 'name': 'lets learn Django'},
-#     {'id': 3, 'name': 'lets learn Flask'},
-#     {'id': 4, 'name': 'lets learn SQL'},
-# ]
 
 
 def loginPage(request):
